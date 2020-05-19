@@ -25,7 +25,6 @@ stages:
         containerRegistry: 'Container Registry Connection'
         tags: |
           $(tag)
-
 - stage: 'Deploy'
   displayName: 'Deploy the container'
   dependsOn: Build
@@ -40,5 +39,5 @@ stages:
     - task: AzureWebAppContainer@1
       inputs:
        appName: $(WebAppName)
-       azureSubscription: 'Free Trial'
+       azureSubscription: 'Resource Manager - Tailspin - Space Game'
        imageName: $(RegistryName)/$(webRepository):$(build.buildId)
